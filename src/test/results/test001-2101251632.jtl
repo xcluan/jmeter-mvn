@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testResults version="1.2">
+<httpSample t="508" it="0" lt="505" ct="266" ts="1611563585423" s="true" lb="HTTP请求-One" rc="200" rm="OK" tn="线程组 1-1" dt="text" by="494" sby="119" ng="1" na="1">
+  <java.net.URL>http://httpbin.org/get</java.net.URL>
+</httpSample>
+<httpSample t="232" it="0" lt="232" ct="0" ts="1611563585946" s="true" lb="HTTP请求-Two" rc="200" rm="OK" tn="线程组 1-1" dt="text" by="659" sby="204" ng="1" na="1">
+  <java.net.URL>http://httpbin.org/post</java.net.URL>
+</httpSample>
+<httpSample t="218" it="0" lt="218" ct="0" ts="1611563586179" s="true" lb="HTTP请求-Three" rc="200" rm="OK" tn="线程组 1-1" dt="text" by="494" sby="119" ng="1" na="1">
+  <java.net.URL>http://httpbin.org/get</java.net.URL>
+</httpSample>
+
+</testResults>

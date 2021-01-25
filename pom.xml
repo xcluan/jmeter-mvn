@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.mytest</groupId>
+    <artifactId>jmeter-test</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--Jmeter测试结果(jtl/csv)的存储路径-->
+        <jmeter.result.jtl.dir>${project.basedir}/src/test/results</jmeter.result.jtl.dir>
+        <!--Jmeter测试结果jtl文件转为html后的存储路径-->
+        <jmeter.result.html.dir>${project.basedir}/src/test/html_reports</jmeter.result.html.dir>
+        <!--测试报告时间-->
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!--maven执行jmeter脚本插件-->
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <version>3.1.2</version>
+                <executions>
+                    <!-- Generate JMeter configuration -->
+                    <execution>
+                        <id>configuration</id>
+                        <goals>
+                            <goal>configure</goal>
+                        </goals>
+                    </execution>
+                    <!-- Run JMeter tests -->
+                    <execution>
+                        <id>jmeter-tests</id>
+                        <goals>
+                            <goal>jmeter</goal>
+                        </goals>
+                    </execution>
+                    <!-- Fail build on errors in test -->
+                    <execution>
+                        <id>jmeter-check-results</id>
+                        <goals>
+                            <goal>results</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!--指定jmeter版本-->
+                    <jmeterVersion>5.4</jmeterVersion>
+                    <!--指定要运行的jmeter脚本-->
+                    <testFilesIncluded>*.jmx</testFilesIncluded>
+                    <!--指定不要运行的jmeter脚本-->
+<!--                    <testFilesExcluded>test002.jmx</testFilesExcluded>-->
+
+                    <!--设置jmeter报告文件的输入位置-->
+                    <resultsDirectory>${jmeter.result.jtl.dir}</resultsDirectory>
+                    <!--默认此插件使用csv格式。这里需要将其切换为xml格式。-->
+                    <resultsFileFormat>xml</resultsFileFormat>
+                    <!--默认generateReports是true格式为csv，会覆盖resultsFileFormat的设置，需要设为false-->
+                    <generateReports>false</generateReports>
+                    <!--执行遇到错误会停止maven，设置忽略失败-->
+                    <ignoreResultFailures>true</ignoreResultFailures>
+                    <!--结果文件名添加时间戳-->
+                    <testResultsTimestamp>true</testResultsTimestamp>
+                    <!--时间戳设置在文件名末尾-->
+                    <appendResultsTimestamp>true</appendResultsTimestamp>
+                    <!--时间戳设置格式-->
+                    <resultsFileNameDateFormat>yyyyMMddHHmm</resultsFileNameDateFormat>
+                    <!--指定日志级别-->
+                    <overrideRootLogLevel>debug</overrideRootLogLevel>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!--xml转html插件-->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+                <version>1.0.2</version>
+                <executions>
+                    <execution>
+                        <!--verif阶段执行-->
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>transform</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <transformationSets>
+                        <transformationSet>
+                            <!--jtl的存储路径-->
+                            <dir>${jmeter.result.jtl.dir}</dir>
+                            <!--解析模板-->
+                            <stylesheet>src\test\resources\jmeter-results-shanhe-me.xsl</stylesheet>
+                            <!--通过模板解析生成html文件-->
+                            <outputDir>${jmeter.result.html.dir}</outputDir>
+                            <fileMappers>
+                                <fileMapper
+                                        implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+                                    <targetExtension>html</targetExtension>
+                                </fileMapper>
+                            </fileMappers>
+                            <parameters>
+                                <parameter>
+                                    <name>projectName</name>
+                                    <value>DWS-BY</value>
+                                </parameter>
+                                <parameter>
+                                    <name>dateReport</name>
+                                    <value>${timestamp}</value>
+                                </parameter>
+                                <parameter>
+                                    <name>version</name>
+                                    <value>V1.0</value>
+                                </parameter>
+                            </parameters>
+                        </transformationSet>
+                    </transformationSets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
