@@ -95,7 +95,7 @@
                             <!--jtl的存储路径-->
                             <dir>${jmeter.result.jtl.dir}</dir>
                             <!--解析模板-->
-                            <stylesheet>${project.basedir}\src\test\resources\jmeter-results-shanhe-me.xsl</stylesheet>
+                            <stylesheet>${project.basedir}/src/test/resources/jmeter-results-shanhe-me.xsl</stylesheet>
                             <!--通过模板解析生成html文件-->
                             <outputDir>${jmeter.result.html.dir}</outputDir>
                             <fileMappers>
