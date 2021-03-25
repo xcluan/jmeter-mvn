@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/xcluan/jmeter-mvn.git'
+                git 'https://pd.zwc365.com/seturl/https://github.com/xcluan/jmeter-mvn.git'
 
                 // Run Maven on a Unix agent.
                 sh "mvn verify"
