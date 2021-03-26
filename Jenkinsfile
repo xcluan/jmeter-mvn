@@ -16,7 +16,7 @@ pipeline {
         stage('Verify') {
             steps {
                 // Run Maven on a Unix agent.
-                sh "mvn clean verify"
+                sh "mvn clean verify -Dsuite.name=${SuiteName}"
             }
 
             post {
