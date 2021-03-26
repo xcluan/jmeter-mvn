@@ -53,7 +53,8 @@
                     <!--指定jmeter版本-->
                     <jmeterVersion>5.4</jmeterVersion>
                     <!--指定要运行的jmeter脚本-->
-                    <testFilesIncluded>*.jmx</testFilesIncluded>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <testFilesIncluded>${SuiteName}.jmx</testFilesIncluded>
                     <!--指定不要运行的jmeter脚本-->
 <!--                    <testFilesExcluded>test002.jmx</testFilesExcluded>-->
 
