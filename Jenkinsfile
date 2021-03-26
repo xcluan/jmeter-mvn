@@ -7,16 +7,16 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Pull Code') {
             steps {
                 // Get some code from a GitHub repository
                 git 'https://pd.zwc365.com/seturl/https://github.com/xcluan/jmeter-mvn.git'
-
+            }
+        }
+        stage('Verify') {
+            steps {
                 // Run Maven on a Unix agent.
-                sh "mvn verify"
-
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+                sh "mvn clean verify"
             }
 
             post {
