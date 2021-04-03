@@ -15,7 +15,7 @@ pipeline {
         stage('Verify') {
             steps {
                 // Run Maven on a Unix agent.
-                sh "mvn clean verify -Dsuite.name=${SuiteName} -Dreport.time=${BUILD_TIMESTAMP}"
+                sh "mvn clean verify -Dsuite.name=${SuiteName} -Dreport.time=${BUILD_TIMESTAMP} -Dbuild.id=${BUILD_ID}"
             }
 
             post {
