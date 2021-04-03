@@ -9,7 +9,7 @@ pipeline {
         stage('Clean') {
             steps {
                 // delete dir
-                sh 'find . -maxdepth 1 -type d -ctime -7 -name "2021*" | xargs rm -rvf; rm -rfv jtl'
+                sh 'find /var/html -maxdepth 1 -type d -ctime -7 -name "2021*" | xargs rm -rvf; rm -rfv /var/html/jtl'
             }
         }
         stage('PullCode') {
