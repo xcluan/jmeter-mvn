@@ -10,18 +10,18 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--测试文件夹以日期命名-->
-        <timestamp>${maven.build.timestamp}</timestamp>
-        <maven.build.timestamp.format>yy-MM-dd</maven.build.timestamp.format>
-        <!--Jmeter测试结果(jtl/csv)的存储路径-->
-        <jmeter.result.jtl.dir>/var/html/jtl/${timestamp}</jmeter.result.jtl.dir>
-        <!--Jmeter测试结果jtl文件转为html后的存储路径-->
-        <jmeter.result.html.dir>/var/html/${timestamp}</jmeter.result.html.dir>
         <!--测试报告时间-->
-        <report.time>${timestamp}</report.time>
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <maven.build.timestamp.format>yy-MM-dd HH:mm:ss</maven.build.timestamp.format>
+        <!--测试目录日期-->
+        <dir.time>2021-01-01</dir.time>
+        <!--Jmeter测试结果(jtl/csv)的存储路径-->
+        <jmeter.result.jtl.dir>/var/html/jtl/${dir.time}</jmeter.result.jtl.dir>
+        <!--Jmeter测试结果jtl文件转为html后的存储路径-->
+        <jmeter.result.html.dir>/var/html/${dir.time}</jmeter.result.html.dir>
         <!--测试脚本名称-->
         <suite.name>*</suite.name>
-        <!--测试脚本名称-->
+        <!--测试构建ID-->
         <build.id>*</build.id>
     </properties>
 
@@ -77,7 +77,7 @@
                     <!--时间戳设置在文件名末尾-->
                     <appendResultsTimestamp>true</appendResultsTimestamp>
                     <!--时间戳设置格式-->
-                    <resultsFileNameDateFormat>yyMMddHHmm-${build.id}</resultsFileNameDateFormat>
+                    <resultsFileNameDateFormat>ddHHmm-${build.id}</resultsFileNameDateFormat>
                     <!--指定日志级别-->
                     <overrideRootLogLevel>debug</overrideRootLogLevel>
                 </configuration>
@@ -118,7 +118,7 @@
                                 </parameter>
                                 <parameter>
                                     <name>dateReport</name>
-                                    <value>${report.time}</value>
+                                    <value>${timestamp}</value>
                                 </parameter>
                                 <parameter>
                                     <name>version</name>
