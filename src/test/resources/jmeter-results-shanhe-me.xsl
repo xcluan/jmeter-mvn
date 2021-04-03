@@ -245,7 +245,17 @@
 					</xsl:call-template>
 				</td>
 				<td >
-					<xsl:value-of select="sum(/testResults/*/@t)" />
+					<xsl:choose>
+						<xsl:when test="not($allMinTime)">NaN66666</xsl:when>
+						<xsl:otherwise>
+							<xsl:for-each select="$allMinTime">
+								<xsl:sort data-type="number" />
+								<!--				<xsl:if test="position() = 1">-->
+								<xsl:value-of select="number(.)" />
+								<!--				</xsl:if>-->
+							</xsl:for-each>
+						</xsl:otherwise>
+					</xsl:choose>
 					<xsl:call-template name="display-time">
 						<xsl:with-param name="value" select="$allMinTime" />
 					</xsl:call-template>
