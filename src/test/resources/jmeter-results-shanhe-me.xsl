@@ -89,7 +89,7 @@
 						<div class="row-fluid">
 							<div class="col-md-12">
 								<div id="heading">
-									<h1>JMeter Test Results</h1>
+									<h1>API Test Results</h1>
 									<p class='attribute'><strong>Date report: </strong> <xsl:value-of select="$dateReport" /></p>
 									<p class='attribute'><strong>Project name: </strong>  <xsl:value-of select="$projectName" /></p>
 									<p class='attribute'><strong>Version: </strong> <xsl:value-of select="$version" /></p>

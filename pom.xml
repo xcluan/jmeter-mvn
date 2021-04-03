@@ -157,6 +157,7 @@
                                 </parameter>
                                 <parameter>
                                     <name>dateReport</name>
+                                    <!--suppress UnresolvedMavenProperty -->
                                     <value>${build.time}</value>
                                 </parameter>
                                 <parameter>
