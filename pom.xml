@@ -10,13 +10,16 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--Jmeter测试结果(jtl/csv)的存储路径-->
-        <jmeter.result.jtl.dir>${project.basedir}/src/test/results</jmeter.result.jtl.dir>
-        <!--Jmeter测试结果jtl文件转为html后的存储路径-->
-        <jmeter.result.html.dir>${project.basedir}/src/test/html_reports</jmeter.result.html.dir>
-        <!--测试报告时间-->
+        <!--测试文件夹以日期命名-->
         <timestamp>${maven.build.timestamp}</timestamp>
-        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+        <maven.build.timestamp.format>yy-MM-dd</maven.build.timestamp.format>
+        <!--Jmeter测试结果(jtl/csv)的存储路径-->
+        <jmeter.result.jtl.dir>/var/html/jtl/${timestamp}</jmeter.result.jtl.dir>
+        <!--Jmeter测试结果jtl文件转为html后的存储路径-->
+        <jmeter.result.html.dir>/var/html/${timestamp}</jmeter.result.html.dir>
+        <!--测试报告时间-->
+        <report.time>${timestamp}</report.time>
+        <!--测试脚本名称-->
         <suite.name>*</suite.name>
     </properties>
 
@@ -113,7 +116,7 @@
                                 </parameter>
                                 <parameter>
                                     <name>dateReport</name>
-                                    <value>${timestamp}</value>
+                                    <value>${report.time}</value>
                                 </parameter>
                                 <parameter>
                                     <name>version</name>
