@@ -21,6 +21,8 @@
         <report.time>${timestamp}</report.time>
         <!--测试脚本名称-->
         <suite.name>*</suite.name>
+        <!--测试脚本名称-->
+        <build.id>*</build.id>
     </properties>
 
     <build>
@@ -106,7 +108,7 @@
                             <fileMappers>
                                 <fileMapper
                                         implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
-                                    <targetExtension>html</targetExtension>
+                                    <targetExtension>-${build.id}.html</targetExtension>
                                 </fileMapper>
                             </fileMappers>
                             <parameters>
