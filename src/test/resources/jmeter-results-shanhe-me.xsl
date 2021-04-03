@@ -207,6 +207,8 @@
 				<th>Max Time</th>
 			</tr>
 			<tr >
+				<xsl:variable name="testTime" select="/testResults/*/@t/.." />
+
 				<xsl:variable name="allCount" select="count(/testResults/*)" />
 				<xsl:variable name="allFailureCount" select="count(/testResults/*[attribute::s='false'])" />
 				<xsl:variable name="allSuccessCount" select="count(/testResults/*[attribute::s='true'])" />
@@ -246,13 +248,13 @@
 				</td>
 				<td >
 					<xsl:choose>
-						<xsl:when test="not($allMinTime)">NaN66666</xsl:when>
+						<xsl:when test="not($testTime)">NaN66666</xsl:when>
 						<xsl:otherwise>
-							<xsl:for-each select="$allMinTime">
+							<xsl:for-each select="$testTime">
 								<xsl:sort data-type="number" />
-								<!--				<xsl:if test="position() = 1">-->
-								<xsl:value-of select="number(.)" />
-								<!--				</xsl:if>-->
+								<xsl:if test="position() = 1">
+									<xsl:value-of select="number(.)" />
+								</xsl:if>
 							</xsl:for-each>
 						</xsl:otherwise>
 					</xsl:choose>
