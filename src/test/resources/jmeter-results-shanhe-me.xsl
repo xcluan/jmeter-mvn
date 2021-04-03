@@ -247,6 +247,12 @@
 					</xsl:call-template>
 				</td>
 				<td >
+					<xsl:for-each select="$testTime">
+						<xsl:sort data-type="number" />
+						<xsl:if test="position() = 1">
+							<xsl:value-of select="$testTime" />
+						</xsl:if>
+					</xsl:for-each>
 					<xsl:choose>
 						<xsl:when test="not($testTime)">NaN66666</xsl:when>
 						<xsl:otherwise>
