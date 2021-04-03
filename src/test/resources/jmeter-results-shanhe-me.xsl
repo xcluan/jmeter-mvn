@@ -247,6 +247,7 @@
 					</xsl:call-template>
 				</td>
 				<td >
+					<xsl:value-of select="$testTime" />
 					<xsl:for-each select="$testTime">
 						<xsl:sort data-type="number" />
 						<xsl:if test="position() = 1">
