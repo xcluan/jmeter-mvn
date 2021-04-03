@@ -9,8 +9,8 @@
         <html lang="en">
         <head>
             <meta name="Author" content="shanhe.me"/>
-			<link rel="shortcut icon" href="/js/favicon.png"/>
-            <title>API Test Results</title>
+			<link rel="shortcut icon" href="./js/favicon.png">
+            <title>JMeter Test Results</title>
 			<style type="text/css"><![CDATA[
 				body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
 				
@@ -52,7 +52,7 @@
 				}
 		   /* -- left-panel ---------------------------------------------------------------------- */
 				.col-md-4{
-					height: 500px;
+					max-height: 550px;
                     overflow-y: auto;
 					margin-top:20px
 				}
@@ -78,9 +78,9 @@
 			<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css"/>  
 			<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 			<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-			<script type="text/javascript" src="/js/searchcase.js"></script>
-			<script src="/js/jquery-1.11.3.min.js"></script>
-			<script src="/js/pagelayout.js"></script>
+			<script type="text/javascript" src="js/searchcase.js"></script>
+			<script src="js/jquery-1.11.3.min.js"></script>
+			<script src="js/pagelayout.js"></script>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         </head>
         <body>
@@ -89,7 +89,7 @@
 						<div class="row-fluid">
 							<div class="col-md-12">
 								<div id="heading">
-									<h1>API Test Results</h1>
+									<h1>JMeter Test Results</h1>
 									<p class='attribute'><strong>Date report: </strong> <xsl:value-of select="$dateReport" /></p>
 									<p class='attribute'><strong>Project name: </strong>  <xsl:value-of select="$projectName" /></p>
 									<p class='attribute'><strong>Version: </strong> <xsl:value-of select="$version" /></p>
@@ -175,9 +175,10 @@
 												<div class="zebra">
 													<table class="table table-striped">
 														<tr><td class="data key">Response Headers</td><td class="data"><pre class="data"><xsl:value-of select="responseHeader"/></pre></td></tr>
-														<tr><td class="data key">Response Data</td><td class="data"><pre id='RawJson{position()}' class="data"><xsl:value-of select="responseData"/></pre></td></tr>
+														<!-- <tr><td class="data key">Response Data</td><td class="data"><pre id='RawJson{position()}' class="data"><xsl:value-of select="responseData"/></pre></td></tr> -->
 														<tr><td class="data key">Response File</td><td class="data"><pre class="data"><xsl:value-of select="responseFile"/></pre></td></tr>
-														<tr><td class="data key">JSON Data Format</td><td><div id="Canvas{position()}" class="Canvas"></div></td></tr>
+														<!-- <tr><td class="data key">JSON Data Format</td><td><div id="Canvas{position()}" class="Canvas"></div></td></tr> -->
+														<tr><td class="data key">Response Data</td><td><div id="Canvas{position()}" class="Canvas"><xsl:value-of select="responseData"/></div></td></tr>
 													</table>
 												</div>
 												<div class="trail"></div>
@@ -187,7 +188,7 @@
 									</ul>
 								</div>
 				        </div>
-						<div id="right-panel" class="col-md-8" style="height:500px; overflow-y:auto;margin-top:20px"></div>
+						<div id="right-panel" class="col-md-8" style="max-height:550px; overflow-y:auto;margin-top:20px"></div>
 					</div>
 				</div>
 			</div>
@@ -230,7 +231,7 @@
 				<td >
 					<xsl:value-of select="$allCount" />
 				</td>
-				<td >
+				<td style="cursor:pointer" class="fail">
 					<xsl:value-of select="$allFailureCount" />
 				</td>
 				<td >

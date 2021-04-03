@@ -34,19 +34,21 @@
             <!--修改时区GMT+8-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
-                <artifactId>buildnumber-maven-plugin</artifactId>
-                <version>1.4</version>
-                <configuration>
-                    <timestampFormat>yy-MM-dd HH:mm:ss</timestampFormat>
-                </configuration>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
+                        <id>timestamp-property</id>
                         <goals>
-                            <goal>create-timestamp</goal>
+                            <goal>timestamp-property</goal>
                         </goals>
+                        <configuration>
+                            <name>build.time</name>
+                            <pattern>yyyy-MM-dd HH:mm:ss</pattern>
+                            <timeZone>GMT+8</timeZone>
+                        </configuration>
                     </execution>
                 </executions>
-                <inherited>false</inherited>
             </plugin>
             <plugin>
                 <!--maven执行jmeter脚本插件-->
