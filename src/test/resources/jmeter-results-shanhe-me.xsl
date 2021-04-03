@@ -207,7 +207,7 @@
 				<th>Max Time</th>
 			</tr>
 			<tr >
-				<xsl:variable name="testTime" select="/testResults/*/@t" />
+				<xsl:variable name="testTime" select="//@t" />
 
 				<xsl:variable name="allCount" select="count(/testResults/*)" />
 				<xsl:variable name="allFailureCount" select="count(/testResults/*[attribute::s='false'])" />
