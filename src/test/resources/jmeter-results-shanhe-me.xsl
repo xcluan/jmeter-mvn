@@ -255,6 +255,7 @@
 					</xsl:for-each>
 				</td>
 				<td >
+					<xsl:value-of select="$allMaxTime" />
 					<xsl:call-template name="display-time">
 						<xsl:with-param name="value" select="$allMaxTime" />
 					</xsl:call-template>
