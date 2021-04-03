@@ -258,7 +258,7 @@
 				<td >
 					<xsl:for-each select="$testTime">
 						<xsl:sort data-type="number" order="descending" />
-						<xsl:value-of select="$testTime" />
+						<xsl:value-of select="number($testTime)" />
 					</xsl:for-each>
 
 					<xsl:value-of select="$allMaxTime" />
