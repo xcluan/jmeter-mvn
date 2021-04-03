@@ -259,7 +259,7 @@
 	</xsl:template>
 	
 	<xsl:template name="min">
-	<xsl:param name="nodes" select="/.." />
+	<xsl:param name="nodes" select="/testResults/*/@t" />
 	<xsl:choose>
 		<xsl:when test="not($nodes)">NaN</xsl:when>
 		<xsl:otherwise>
@@ -273,7 +273,7 @@
 	</xsl:choose>
 	</xsl:template>
 	<xsl:template name="max">
-		<xsl:param name="nodes" select="/.." />
+		<xsl:param name="nodes" select="/testResults/*/@t" />
 		<xsl:choose>
 			<xsl:when test="not($nodes)">NaN</xsl:when>
 			<xsl:otherwise>
