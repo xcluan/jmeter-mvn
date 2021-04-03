@@ -255,6 +255,11 @@
 					</xsl:for-each>
 				</td>
 				<td >
+					<xsl:for-each select="$testTime">
+						<xsl:sort data-type="number" order="descending" />
+						<xsl:value-of select="$testTime" />
+					</xsl:for-each>
+
 					<xsl:value-of select="$allMaxTime" />
 					<xsl:call-template name="display-time">
 						<xsl:with-param name="value" select="$allMaxTime" />
