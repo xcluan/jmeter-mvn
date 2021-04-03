@@ -222,7 +222,7 @@
 				</xsl:variable>
 				<xsl:variable name="allMaxTime">
 					<xsl:call-template name="max">
-						<xsl:with-param name="nodes" select="/testResults/*/@t" />
+						<xsl:with-param name="nodes" select="//@t" />
 					</xsl:call-template>
 				</xsl:variable>
 				<xsl:attribute name="class">
@@ -255,15 +255,9 @@
 					</xsl:for-each>
 				</td>
 				<td >
-					<xsl:for-each select="$testTime">
-						<xsl:sort data-type="number" order="descending"/>
-						<xsl:if test="position() = 1">
-							<xsl:value-of select="$testTime" />
-						</xsl:if>
-					</xsl:for-each>
-<!--					<xsl:call-template name="display-time">-->
-<!--						<xsl:with-param name="value" select="$allMaxTime" />-->
-<!--					</xsl:call-template>-->
+					<xsl:call-template name="display-time">
+						<xsl:with-param name="value" select="$allMaxTime" />
+					</xsl:call-template>
 				</td>
 			</tr>
 		</table>
@@ -284,7 +278,7 @@
 	</xsl:choose>
 	</xsl:template>
 	<xsl:template name="max">
-		<xsl:param name="nodes" select="." />
+		<xsl:param name="nodes"/>
 		<xsl:choose>
 			<xsl:when test="not($nodes)">NaN</xsl:when>
 			<xsl:otherwise>
