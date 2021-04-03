@@ -23,10 +23,31 @@
         <suite.name>*</suite.name>
         <!--测试构建ID-->
         <build.id>*</build.id>
+        <!--测试项目名称-->
+        <proj.name>Httpbin.org</proj.name>
+        <!--测试项目版本-->
+        <proj.version>V1.0</proj.version>
     </properties>
 
     <build>
         <plugins>
+            <!--修改时区GMT+8-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.4</version>
+                <configuration>
+                    <timestampFormat>yy-MM-dd HH:mm:ss</timestampFormat>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>create-timestamp</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <inherited>false</inherited>
+            </plugin>
             <plugin>
                 <!--maven执行jmeter脚本插件-->
                 <groupId>com.lazerycode.jmeter</groupId>
@@ -62,8 +83,7 @@
                     <!--suppress UnresolvedMavenProperty -->
                     <testFilesIncluded>${suite.name}.jmx</testFilesIncluded>
                     <!--指定不要运行的jmeter脚本-->
-<!--                    <testFilesExcluded>test002.jmx</testFilesExcluded>-->
-
+                    <!--<testFilesExcluded>*.jmx</testFilesExcluded>-->
                     <!--设置jmeter报告文件的输入位置-->
                     <resultsDirectory>${jmeter.result.jtl.dir}</resultsDirectory>
                     <!--默认此插件使用csv格式。这里需要将其切换为xml格式。-->
@@ -114,7 +134,7 @@
                             <parameters>
                                 <parameter>
                                     <name>projectName</name>
-                                    <value>DWS-BY</value>
+                                    <value>${proj.name}</value>
                                 </parameter>
                                 <parameter>
                                     <name>dateReport</name>
@@ -122,7 +142,7 @@
                                 </parameter>
                                 <parameter>
                                     <name>version</name>
-                                    <value>V1.0</value>
+                                    <value>${proj.version}</value>
                                 </parameter>
                             </parameters>
                         </transformationSet>

@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage('Clean') {
             steps {
-                // delete dir
-                sh 'find /var/html -maxdepth 1 -type d -ctime -7 -name "2021*" | xargs rm -rvf; rm -rfv /var/html/jtl'
+                // Delete the report 7 days ago and the jtl file
+                sh 'find /var/html -maxdepth 1 -type d -ctime +7 -name "2021*" | xargs rm -rvf; rm -rfv /var/html/jtl'
             }
         }
         stage('PullCode') {
