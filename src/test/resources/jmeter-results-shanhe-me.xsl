@@ -9,7 +9,7 @@
         <html lang="en">
         <head>
             <meta name="Author" content="shanhe.me"/>
-			<link rel="shortcut icon" href="./js/favicon.png">
+			<link rel="shortcut icon" href="./js/favicon.png"/>
             <title>JMeter Test Results</title>
 			<style type="text/css"><![CDATA[
 				body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
