@@ -253,25 +253,17 @@
 							<xsl:value-of select="$testTime" />
 						</xsl:if>
 					</xsl:for-each>
-					<xsl:choose>
-						<xsl:when test="not($testTime)">NaN66666</xsl:when>
-						<xsl:otherwise>
-							<xsl:for-each select="$testTime">
-								<xsl:sort data-type="number" />
-								<xsl:if test="position() = 1">
-									<xsl:value-of select="number(.)" />
-								</xsl:if>
-							</xsl:for-each>
-						</xsl:otherwise>
-					</xsl:choose>
-					<xsl:call-template name="display-time">
-						<xsl:with-param name="value" select="$allMinTime" />
-					</xsl:call-template>
 				</td>
 				<td >
-					<xsl:call-template name="display-time">
-						<xsl:with-param name="value" select="$allMaxTime" />
-					</xsl:call-template>
+					<xsl:for-each select="$testTime">
+						<xsl:sort data-type="number" order="descending"/>
+						<xsl:if test="position() = 1">
+							<xsl:value-of select="$testTime" />
+						</xsl:if>
+					</xsl:for-each>
+<!--					<xsl:call-template name="display-time">-->
+<!--						<xsl:with-param name="value" select="$allMaxTime" />-->
+<!--					</xsl:call-template>-->
 				</td>
 			</tr>
 		</table>
