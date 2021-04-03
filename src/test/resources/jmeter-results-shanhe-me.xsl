@@ -245,6 +245,7 @@
 					</xsl:call-template>
 				</td>
 				<td >
+					<xsl:value-of select="sum(/testResults/*/@t)" />
 					<xsl:call-template name="display-time">
 						<xsl:with-param name="value" select="$allMinTime" />
 					</xsl:call-template>
@@ -266,7 +267,7 @@
 			<xsl:for-each select="$nodes">
 				<xsl:sort data-type="number" />
 				<xsl:if test="position() = 1">
-					<xsl:value-of select="number($nodes)" />
+					<xsl:value-of select="number(.)" />
 				</xsl:if>
 			</xsl:for-each>
 		</xsl:otherwise>
