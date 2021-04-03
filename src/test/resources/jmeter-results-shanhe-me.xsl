@@ -215,12 +215,12 @@
 				<xsl:variable name="allAverageTime" select="$allTotalTime div $allCount" />
 				<xsl:variable name="allMinTime">
 					<xsl:call-template name="min">
-						<xsl:with-param name="nodes" select="*/@t" />
+						<xsl:with-param name="nodes" select="/testResults/*/@t" />
 					</xsl:call-template>
 				</xsl:variable>
 				<xsl:variable name="allMaxTime">
 					<xsl:call-template name="max">
-						<xsl:with-param name="nodes" select="*/@t" />
+						<xsl:with-param name="nodes" select="/testResults/*/@t" />
 					</xsl:call-template>
 				</xsl:variable>
 				<xsl:attribute name="class">
@@ -259,32 +259,32 @@
 	</xsl:template>
 	
 	<xsl:template name="min">
-	<xsl:param name="nodes" select="." />
-<!--	<xsl:choose>-->
-<!--		<xsl:when test="not($nodes)">NaN</xsl:when>-->
-<!--		<xsl:otherwise>-->
+	<xsl:param name="nodes" />
+	<xsl:choose>
+		<xsl:when test="not($nodes)">NaN66666</xsl:when>
+		<xsl:otherwise>
 			<xsl:for-each select="$nodes">
 				<xsl:sort data-type="number" />
 				<xsl:if test="position() = 1">
 					<xsl:value-of select="number(.)" />
 				</xsl:if>
 			</xsl:for-each>
-<!--		</xsl:otherwise>-->
-<!--	</xsl:choose>-->
+		</xsl:otherwise>
+	</xsl:choose>
 	</xsl:template>
 	<xsl:template name="max">
 		<xsl:param name="nodes" select="." />
-<!--		<xsl:choose>-->
-<!--			<xsl:when test="not($nodes)">NaN</xsl:when>-->
-<!--			<xsl:otherwise>-->
+		<xsl:choose>
+			<xsl:when test="not($nodes)">NaN</xsl:when>
+			<xsl:otherwise>
 				<xsl:for-each select="$nodes">
 					<xsl:sort data-type="number" order="descending" />
 					<xsl:if test="position() = 1">
 						<xsl:value-of select="number(.)" />
 					</xsl:if>
 				</xsl:for-each>
-<!--			</xsl:otherwise>-->
-<!--		</xsl:choose>-->
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template name="display-percent">
