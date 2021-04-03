@@ -105,19 +105,30 @@
                     <!--输出数据-->
                     <propertiesJMeter>
                         <CookieManager.save.cookies>true</CookieManager.save.cookies>
+                        <jmeter.save.saveservice.data_type>true</jmeter.save.saveservice.data_type>
+                        <jmeter.save.saveservice.label>true</jmeter.save.saveservice.label>
                         <jmeter.save.saveservice.response_code>true</jmeter.save.saveservice.response_code>
                         <jmeter.save.saveservice.response_data>true</jmeter.save.saveservice.response_data>
-                        <jmeter.save.saveservice.response_data.on_error>true</jmeter.save.saveservice.response_data.on_error>
+                        <jmeter.save.saveservice.response_data.on_error>false</jmeter.save.saveservice.response_data.on_error>
                         <jmeter.save.saveservice.response_message>true</jmeter.save.saveservice.response_message>
                         <jmeter.save.saveservice.successful>true</jmeter.save.saveservice.successful>
+                        <jmeter.save.saveservice.thread_name>true</jmeter.save.saveservice.thread_name>
+                        <jmeter.save.saveservice.time>true</jmeter.save.saveservice.time>
+                        <jmeter.save.saveservice.subresults>true</jmeter.save.saveservice.subresults>
                         <jmeter.save.saveservice.assertions>true</jmeter.save.saveservice.assertions>
                         <jmeter.save.saveservice.latency>true</jmeter.save.saveservice.latency>
                         <jmeter.save.saveservice.connect_time>true</jmeter.save.saveservice.connect_time>
                         <jmeter.save.saveservice.samplerData>true</jmeter.save.saveservice.samplerData>
                         <jmeter.save.saveservice.responseHeaders>true</jmeter.save.saveservice.responseHeaders>
                         <jmeter.save.saveservice.requestHeaders>true</jmeter.save.saveservice.requestHeaders>
+                        <jmeter.save.saveservice.encoding>false</jmeter.save.saveservice.encoding>
+                        <jmeter.save.saveservice.bytes>true</jmeter.save.saveservice.bytes>
+                        <jmeter.save.saveservice.url>true</jmeter.save.saveservice.url>
                         <jmeter.save.saveservice.filename>true</jmeter.save.saveservice.filename>
+                        <jmeter.save.saveservice.hostname>true</jmeter.save.saveservice.hostname>
+                        <jmeter.save.saveservice.thread_counts>true</jmeter.save.saveservice.thread_counts>
                         <jmeter.save.saveservice.sample_count>true</jmeter.save.saveservice.sample_count>
+                        <jmeter.save.saveservice.idle_time>true</jmeter.save.saveservice.idle_time>
                     </propertiesJMeter>
                 </configuration>
             </plugin>
