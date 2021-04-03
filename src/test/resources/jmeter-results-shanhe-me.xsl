@@ -266,9 +266,9 @@
 		<xsl:otherwise>
 			<xsl:for-each select="$nodes">
 				<xsl:sort data-type="number" />
-				<xsl:if test="position() = 1">
-					<xsl:value-of select="number(.)" />
-				</xsl:if>
+<!--				<xsl:if test="position() = 1">-->
+					<xsl:value-of select="number($nodes)" />
+<!--				</xsl:if>-->
 			</xsl:for-each>
 		</xsl:otherwise>
 	</xsl:choose>
