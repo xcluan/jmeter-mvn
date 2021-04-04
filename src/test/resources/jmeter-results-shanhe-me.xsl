@@ -9,8 +9,7 @@
         <html lang="en">
         <head>
             <meta name="Author" content="shanhe.me"/>
-			<link rel="shortcut icon" href="/js/favicon.png"/>
-            <title>API Test Results</title>
+            <title>JMeter Test Results</title>
 			<style type="text/css"><![CDATA[
 				body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
 				
@@ -89,7 +88,7 @@
 						<div class="row-fluid">
 							<div class="col-md-12">
 								<div id="heading">
-									<h1>API Test Results</h1>
+									<h1>JMeter Test Results</h1>
 									<p class='attribute'><strong>Date report: </strong> <xsl:value-of select="$dateReport" /></p>
 									<p class='attribute'><strong>Project name: </strong>  <xsl:value-of select="$projectName" /></p>
 									<p class='attribute'><strong>Version: </strong> <xsl:value-of select="$version" /></p>
@@ -207,8 +206,6 @@
 				<th>Max Time</th>
 			</tr>
 			<tr >
-				<xsl:variable name="testTime" select="//@t" />
-
 				<xsl:variable name="allCount" select="count(/testResults/*)" />
 				<xsl:variable name="allFailureCount" select="count(/testResults/*[attribute::s='false'])" />
 				<xsl:variable name="allSuccessCount" select="count(/testResults/*[attribute::s='true'])" />
@@ -222,7 +219,7 @@
 				</xsl:variable>
 				<xsl:variable name="allMaxTime">
 					<xsl:call-template name="max">
-						<xsl:with-param name="nodes" select="//@t" />
+						<xsl:with-param name="nodes" select="/testResults/*/@t" />
 					</xsl:call-template>
 				</xsl:variable>
 				<xsl:attribute name="class">
@@ -247,21 +244,11 @@
 					</xsl:call-template>
 				</td>
 				<td >
-					<xsl:value-of select="$testTime" />
-					<xsl:for-each select="$testTime">
-						<xsl:sort data-type="number" />
-						<xsl:if test="position() = 1">
-							<xsl:value-of select="$testTime" />
-						</xsl:if>
-					</xsl:for-each>
+					<xsl:call-template name="display-time">
+						<xsl:with-param name="value" select="$allMinTime" />
+					</xsl:call-template>
 				</td>
 				<td >
-					<xsl:for-each select="$testTime">
-						<xsl:sort data-type="number" order="descending" />
-						<xsl:value-of select="number($testTime)" />
-					</xsl:for-each>
-
-					<xsl:value-of select="$allMaxTime" />
 					<xsl:call-template name="display-time">
 						<xsl:with-param name="value" select="$allMaxTime" />
 					</xsl:call-template>
@@ -271,21 +258,21 @@
 	</xsl:template>
 	
 	<xsl:template name="min">
-	<xsl:param name="nodes" />
+	<xsl:param name="nodes" select="/.." />
 	<xsl:choose>
-		<xsl:when test="not($nodes)">NaN66666</xsl:when>
+		<xsl:when test="not($nodes)">NaN</xsl:when>
 		<xsl:otherwise>
 			<xsl:for-each select="$nodes">
 				<xsl:sort data-type="number" />
-<!--				<xsl:if test="position() = 1">-->
-					<xsl:value-of select="number($nodes)" />
-<!--				</xsl:if>-->
+				<xsl:if test="position() = 1">
+					<xsl:value-of select="number(.)" />
+				</xsl:if>
 			</xsl:for-each>
 		</xsl:otherwise>
 	</xsl:choose>
 	</xsl:template>
 	<xsl:template name="max">
-		<xsl:param name="nodes"/>
+		<xsl:param name="nodes" select="/.." />
 		<xsl:choose>
 			<xsl:when test="not($nodes)">NaN</xsl:when>
 			<xsl:otherwise>
